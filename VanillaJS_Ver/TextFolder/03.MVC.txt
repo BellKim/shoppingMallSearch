@@ -1,0 +1,6 @@
+mvc 
+
+Model view controller 
+
+model 과 view 를 연결해주는 controller
+
