@@ -2,6 +2,8 @@ const tag = '[View]'
 
 export default {
   init(el) {
+    // console.log("el출력");
+    // console.log(el);
     if (!el) throw el
     this.el = el
     return this
@@ -12,8 +14,10 @@ export default {
     this.el.addEventListener(event, handler)
     return this
   },
+  
 //on -=> 이벤트를 가져가면
-//emit 은 이벤트를 어떻게 주는가에 대해서 
+//emit 은 이벤트를 어떻게 주는가에 대해서 설정하는 파일. 
+// 이벤트를 받아서 되돌려준다. 
   emit(event, data) {
     const evt = new CustomEvent(event, { detail: data })
     this.el.dispatchEvent(evt)
