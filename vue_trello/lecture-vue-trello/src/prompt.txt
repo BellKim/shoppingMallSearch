@@ -1,0 +1,7 @@
+라우터 설치 명령어
+$ npm i vue-router
+
+
+
+
+
