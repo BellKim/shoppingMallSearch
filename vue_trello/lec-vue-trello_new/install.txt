@@ -1,0 +1,20 @@
+npm install -g @vue/cli-init
+<<setup>>
+
+vue init webpack-simple [project Name]
+<<setup>>
+
+
+get started =>
+    cd lec-vue-trello_new
+     npm install
+     npm run dev
+
+
+
+
+
+
+
+
+
