@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import router from './router/index'
+// import axios from 'axios'
+window.axios = require('axios');
 
 import App from './App.vue'
 
@@ -9,5 +11,6 @@ import App from './App.vue'
 new Vue({
   el: '#app',
   router, 
+  // axios,
   render:h =>h(App)
 })
