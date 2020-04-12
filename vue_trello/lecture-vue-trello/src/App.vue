@@ -5,11 +5,7 @@
 
       <!-- 본문 -->
       <h2> hello world tjqnxj여기서부터 코드를 시작합니다.</h2>
-
-
-
-      <router-link to="/"> home</router-link>
-      <router-link to="/login"> login</router-link>
+      <navbar></navbar>
 
 
 
@@ -21,7 +17,7 @@
 </template>
 
 <script>
-
+import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
@@ -31,7 +27,7 @@ export default {
     }
   },
   components: {
-    
+    Navbar
   }
 }
 </script>
