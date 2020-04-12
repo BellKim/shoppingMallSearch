@@ -6,8 +6,13 @@
       <div>
         BoardList : 
         <div v-if="loading"> loading </div>
-        <div v-else> API result {{apiRes}} </div>
-        <div v-if="error"> <pre>{{error}}</pre> </div>
+        <div v-else>
+           API result {{boards}} 
+           <div v-for="b in boards" :key="b.id">
+             {{b}}
+           </div>
+        </div>
+        <!-- <div v-if="error"> <pre>{{error}}</pre> </div> -->
         <ul>
           <li><!--동적 라우트 매칭 -->
             <router-link to="/b/1">borad 1</router-link>
@@ -29,8 +34,8 @@ export default {
   data(){
     return {
       loading:false,
-      apiRes:'',
-      error:''
+      boards:[],
+      // error:''
 
     }
   },
@@ -41,13 +46,15 @@ export default {
         fetchData(){
           this.loading = true
     
-          axios.get('http://localhost:3000/health')
+          axios.get('http://localhost:3000/boards')
             .then(res=> {   //// handle success
-              this.apiRes = res.data
+              this.boards = res.data
             })
             .catch(res => { // handle error
-              this.error = res.response.data
-    
+              // this.error = res.response.data
+              // 1. 토큰정보가 없어서 500에러가 뜨거나
+              //2. 401이 나왔을때
+              this.$router.replace('/login')//토큰값이 없어서 오류가 떳을때 로그인 페이지로 넘어가도록 한다. 
             })
             .finally(() => {  // always executed
               this.loading = false
