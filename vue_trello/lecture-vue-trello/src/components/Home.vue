@@ -32,6 +32,7 @@
 <script>
 // import axios from 'axios'
 import {board} from '../api'  //api/index.js 에 board객체를 가져오는것이다.
+                              //로그인정보를 확인한다.
 
 export default {
   data(){
