@@ -5,6 +5,7 @@ import App from '../App'
 import Home from '../components/Home.vue'
 import Login from '../components/Login.vue'
 import Board from '../components/Board.vue'
+import Card from '../components/Card.vue'
 import NotFound from '../components/NotFound.vue'
 
 
@@ -17,13 +18,17 @@ const router = new VueRouter({
   //히스토리가 있을경우 #가 붙는경우가 있다. 
   //history 모드를 선언해주면 /#/ 가 붙지 않는다.
   routes:[
-  {path:'/', component:Home},
+    {path:'/', component:Home},
 
-  {path:'/login', component: Login},
+    {path:'/login', component: Login},
 
-  {path:'/b/:bid', component: Board},
+    {path:'/b/:bid', component: Board, 
+      children: [
+        {path:'c/:cid', component: Card}  //children에는 path 맨앞에 / 가 안붙는다.
+      ]
+    },
 
-  {path:'*', component:NotFound}
+    {path:'*', component:NotFound}
   ]
 
 })
