@@ -30,13 +30,14 @@
 </template>
 
 <script>
+// import axios from 'axios'
+import {board} from '../api'  //api/index.js 에 board객체를 가져오는것이다.
+
 export default {
   data(){
     return {
       loading:false,
       boards:[],
-      // error:''
-
     }
   },
   created(){
@@ -45,18 +46,12 @@ export default {
   methods:{
         fetchData(){
           this.loading = true
-    
-          axios.get('http://localhost:3000/boards')
-            .then(res=> {   //// handle success
-              this.boards = res.data
-            })
-            .catch(res => { // handle error
-              // this.error = res.response.data
-              // 1. 토큰정보가 없어서 500에러가 뜨거나
-              //2. 401이 나왔을때
-              this.$router.replace('/login')//토큰값이 없어서 오류가 떳을때 로그인 페이지로 넘어가도록 한다. 
-            })
-            .finally(() => {  // always executed
+
+          board.fetch()
+          .then(data => {
+            this.boards = data
+          })
+          .finally(() => {  // always executed
               this.loading = false
             })
         }
@@ -76,9 +71,7 @@ export default {
         //   })
         //   }
 
-
   }
-
 }
 </script>
 
